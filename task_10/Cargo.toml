@@ -1,0 +1,21 @@
+[package]
+name = "task_10"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies.clap]
+version = "4.5.17"
+features = ["derive"]
+[dependencies.tokio]
+version="1.40.0"
+features=["net","sync","io-util","io-std","macros","rt-multi-thread","time","tracing"]
+
+
+[[bin]]
+name="server"
+path="src/server.rs"
+
+[[bin]]
+name="client"
+path="src/client.rs"
