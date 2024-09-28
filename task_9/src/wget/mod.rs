@@ -1,15 +1,18 @@
 use std::{
-    collections::HashSet, error::Error, io::ErrorKind, rc::Rc,time::{SystemTime, UNIX_EPOCH}
+    collections::HashSet,
+    error::Error,
+    io::ErrorKind,
+    rc::Rc,
+    time::{SystemTime, UNIX_EPOCH},
 };
 
 use clap::Parser as ClapParser;
 use cli::Cli;
 use downloader::Downloader;
 use local::{Directory, Local};
-use selector::WgetSelector;
 use reqwest::Url;
 use scraper::Html;
-
+use selector::WgetSelector;
 
 mod cli;
 mod downloader;

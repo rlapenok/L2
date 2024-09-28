@@ -1,5 +1,9 @@
 use std::{
-    collections::HashMap, error::Error, fs::File, io::{self, BufRead, BufReader}, time::Instant
+    collections::HashMap,
+    error::Error,
+    fs::File,
+    io::{self, BufRead, BufReader},
+    time::Instant,
 };
 
 use clap::Parser;
@@ -55,7 +59,7 @@ impl LfCli {
         let start = Instant::now();
         let result = self.get_information(pool, lines, lines_part);
         let end = start.elapsed();
-        let elapsed=format!("{}.{} s",end.as_secs(),end.subsec_millis());
+        let elapsed = format!("{}.{} s", end.as_secs(), end.subsec_millis());
         let information = json!({
             "elapsed":elapsed,
             "result":result

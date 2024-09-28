@@ -1,4 +1,8 @@
-use std::{collections::{HashMap, HashSet}, fs::File, io::Write};
+use std::{
+    collections::{HashMap, HashSet},
+    fs::File,
+    io::Write,
+};
 
 use clap::Parser;
 use sort_cli::Cli;
@@ -124,14 +128,15 @@ impl SortCli {
         let data = self.cli.load_file().map_err(|err| err.to_string())?;
         let sorted_data = self.sort(data, opts)?;
         if let Some(out_path) = self.cli.get_output() {
-
-            let mut file=File::options().append(true).read(true).create(true).open(out_path).map_err(|err|{
-                err.to_string()
-            })?;
-            let sorted_data=sorted_data.join("\n");
-            file.write_all(sorted_data.as_bytes()).map_err(|err|{
-                err.to_string()
-            })?;
+            let mut file = File::options()
+                .append(true)
+                .read(true)
+                .create(true)
+                .open(out_path)
+                .map_err(|err| err.to_string())?;
+            let sorted_data = sorted_data.join("\n");
+            file.write_all(sorted_data.as_bytes())
+                .map_err(|err| err.to_string())?;
         }
         for i in sorted_data {
             println!("{i}");

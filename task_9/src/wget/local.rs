@@ -4,18 +4,12 @@ use std::{
     path::PathBuf,
 };
 
-
-
 pub enum Directory {
     Html,
     Image,
     Links,
     Script,
 }
-
-
-
-
 
 #[allow(dead_code)]
 #[derive(Debug)]
@@ -39,7 +33,7 @@ impl Local {
         }
     }
 }
-impl  Local {
+impl Local {
     pub fn save(&self, dir: Directory, name: &str, data: &[u8]) -> io::Result<()> {
         //closure for create file for saave
         let create_file = |path: &PathBuf, name: &str| -> io::Result<(File, PathBuf)> {
