@@ -1,0 +1,30 @@
+[package]
+name = "task_12-16"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name="task_12"
+path="src/task_12.rs"
+
+[[bin]]
+name="task_13"
+path="src/task_13.rs"
+
+[[bin]]
+name="task_14"
+path="src/task_14.rs"
+
+
+[[bin]]
+name="task_15"
+path="src/task_15.rs"
+
+
+
+
+[[bin]]
+name="task_16"
+path="src/task_16.rs"
