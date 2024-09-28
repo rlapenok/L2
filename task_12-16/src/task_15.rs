@@ -7,10 +7,10 @@ fn main() {
     //5 символов=> 5 байт
     let size_of_s1 = std::mem::size_of_val(s1);
 
-    //Pointer=>8 byte, Len=>8 byte, Cap=>8 byte
+    //Pointer=>8 byte, Len=>8 byte, Cap=>8 byte (для 64 разрядной системы)
     let size_of_s2 = std::mem::size_of_val(&s2);
 
-    //Pointer=>8 byte, Len=>8 byte
+    //Pointer=>8 byte, Len=>8 byte (для 64 разрядной системы)
     let size_of_s3 = std::mem::size_of_val(&s3);
 
     //5
