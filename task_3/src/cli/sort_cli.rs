@@ -80,7 +80,6 @@ impl Cli {
         if self.options.suffix {
             options.push(Options::Suffix);
         }
-        println!("Options:{:?}", options);
         (column_number_option, skip_white_space, options)
     }
     pub fn get_output(&self) -> &Option<PathBuf> {

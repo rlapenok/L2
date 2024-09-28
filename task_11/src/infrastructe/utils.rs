@@ -9,7 +9,6 @@ use crate::domain::{errors::CalendarErrors, events::Event, filters::{Filter, Inn
 pub fn create_filter<'a>(date:NaiveDate,time_frame:TimeFrameFilter)->Result<Filter<'a>,CalendarErrors>{
     match time_frame {
         TimeFrameFilter::Day => {
-            println!("Day");
             let filter = move |event: &Arc<Event>| {
                 if event.date == date {
                     return Some(event.clone());
@@ -20,7 +19,6 @@ pub fn create_filter<'a>(date:NaiveDate,time_frame:TimeFrameFilter)->Result<Filt
         }
         TimeFrameFilter::Month(inner_time_frame) => match inner_time_frame {
             InnerTimeFrameFilter::Current => {
-            println!("Montch Current");
                 let filter = move |event: &Arc<Event>| {
                     if event.date.year() == date.year() && date.month()==event.date.month() {
                         return Some(event.clone());
@@ -30,7 +28,6 @@ pub fn create_filter<'a>(date:NaiveDate,time_frame:TimeFrameFilter)->Result<Filt
                 Ok(Box::new(filter)) 
             }
             InnerTimeFrameFilter::Next => {
-            println!("Montch next");
                 let to_date=date+Months::new(1);
                 let filter = move |event: &Arc<Event>| {
 
@@ -43,7 +40,6 @@ pub fn create_filter<'a>(date:NaiveDate,time_frame:TimeFrameFilter)->Result<Filt
                 Ok(Box::new(filter)) 
             }
             InnerTimeFrameFilter::Prev => {
-            println!("Montch Prev");
             let from_date=date-Months::new(1);
                 let filter = move |event: &Arc<Event>| {
   
@@ -57,7 +53,6 @@ pub fn create_filter<'a>(date:NaiveDate,time_frame:TimeFrameFilter)->Result<Filt
         },
         TimeFrameFilter::Week(inner_time_frame) => match inner_time_frame {
             InnerTimeFrameFilter::Current => {
-            println!("Week Current");
                 let filter = move |event: &Arc<Event>| {
                     let week = date.iso_week().week();
                     if event.date.iso_week().week() == week &&event.date.year()==date.year() {
@@ -69,7 +64,6 @@ pub fn create_filter<'a>(date:NaiveDate,time_frame:TimeFrameFilter)->Result<Filt
 
             }
             InnerTimeFrameFilter::Next=>{
-            println!("Week Next");
                 let filter = move |event: &Arc<Event>| {
                     let to_date=date+Duration::days(7);
                     if event.date>=date && event.date<=to_date {
@@ -80,7 +74,6 @@ pub fn create_filter<'a>(date:NaiveDate,time_frame:TimeFrameFilter)->Result<Filt
                 Ok(Box::new(filter)) 
             }
             InnerTimeFrameFilter::Prev=>{
-            println!("Week Prev");
                 let filter = move |event: &Arc<Event>| {
                     let from_date=date-Duration::days(7);
                     if event.date>=from_date && event.date<=date {
